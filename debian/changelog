@@ -1,3 +1,119 @@
+expat (2.5.0-2) unstable; urgency=medium
+
+  [ Samuel Thibault <sthibault@debian.org> ]
+  * Generalize libbsd-dev build dependency on kfreebsd and hurd ports
+    (closes: #1035556).
+
+  [ Henry N. <henrynmail-debian@yahoo.com> ]
+  * Fix building with profile nodoc (stage1) (closes: #1037080).
+
+ -- Laszlo Boszormenyi (GCS) <gcs@debian.org>  Wed, 14 Jun 2023 22:08:48 +0200
+
+expat (2.5.0-1) unstable; urgency=high
+
+  * New upstream release:
+    - fixes CVE-2022-43680: heap use-after-free after overeager destruction of
+      a shared DTD in XML_ExternalEntityParserCreate() (closes: #1022743).
+
+ -- Laszlo Boszormenyi (GCS) <gcs@debian.org>  Wed, 26 Oct 2022 15:31:29 +0200
+
+expat (2.4.9-1) unstable; urgency=medium
+
+  * New upstream release.
+
+ -- Laszlo Boszormenyi (GCS) <gcs@debian.org>  Wed, 21 Sep 2022 18:42:18 +0200
+
+expat (2.4.8-2) unstable; urgency=high
+
+  * Backport security fix for CVE-2022-40674: heap use-after-free issue in
+    doContent() (closes: #1019761).
+
+ -- Laszlo Boszormenyi (GCS) <gcs@debian.org>  Thu, 15 Sep 2022 20:53:15 +0200
+
+expat (2.4.8-1) unstable; urgency=medium
+
+  * New upstream release.
+
+ -- Laszlo Boszormenyi (GCS) <gcs@debian.org>  Tue, 29 Mar 2022 22:01:08 +0200
+
+expat (2.4.7-1) unstable; urgency=medium
+
+  * New upstream release:
+    - relax fix to CVE-2022-25236 with regard to all valid URI characters
+      (RFC 3986).
+
+ -- Laszlo Boszormenyi (GCS) <gcs@debian.org>  Sat, 05 Mar 2022 07:11:48 +0100
+
+expat (2.4.6-1) unstable; urgency=medium
+
+  * New upstream release.
+
+ -- Laszlo Boszormenyi (GCS) <gcs@debian.org>  Mon, 21 Feb 2022 21:08:18 +0100
+
+expat (2.4.5-2) unstable; urgency=medium
+
+  * Fix build_model regression (closes: #1006162).
+
+ -- Laszlo Boszormenyi (GCS) <gcs@debian.org>  Sun, 20 Feb 2022 16:26:07 +0100
+
+expat (2.4.5-1) unstable; urgency=high
+
+  * New upstream release:
+    - fixes CVE-2022-25235: certain validation of encoding, such as checks
+      for whether a UTF-8 character is valid can cause code execution
+      (closes: #1005894),
+    - fixes CVE-2022-25236: passing namespace separator characters can cause
+      code execution (closes: #1005895),
+    - fixes CVE-2022-25313: an attacker can trigger stack exhaustion in
+      build_model via a large nesting depth in the DTD element,
+    - fixes CVE-2022-25314: integer overflow in function copyString() ,
+    - fixes CVE-2022-25315: integer overflow in function storeRawNames() .
+
+ -- Laszlo Boszormenyi (GCS) <gcs@debian.org>  Sat, 19 Feb 2022 07:34:25 +0100
+
+expat (2.4.4-1) unstable; urgency=medium
+
+  * New upstream release.
+
+ -- Laszlo Boszormenyi (GCS) <gcs@debian.org>  Tue, 01 Feb 2022 18:51:12 +0100
+
+expat (2.4.3-3) unstable; urgency=high
+
+  * Backport security fix for CVE-2022-23990: integer overflow in
+    doProlog() .
+
+ -- Laszlo Boszormenyi (GCS) <gcs@debian.org>  Thu, 27 Jan 2022 06:44:50 +0100
+
+expat (2.4.3-2) unstable; urgency=high
+
+  * Backport security fix for CVE-2022-23852: XML_GetBuffer() signed integer
+    overflow.
+
+ -- Laszlo Boszormenyi (GCS) <gcs@debian.org>  Mon, 24 Jan 2022 18:18:59 +0100
+
+expat (2.4.3-1) unstable; urgency=high
+
+  * New upstream release:
+    - fixes CVE-2021-45960: left shifts by >=29 places resulting in realloc
+      acting as free, realloc allocating too few bytes, undefined behavior
+      depending on architecture,
+    - fixes CVE-2021-46143: integer overflow leading to realloc acting
+      as free,
+    - fixes CVE-2022-22822: integer overflow in function addBinding,
+    - fixes CVE-2022-22823: integer overflow in function build_model,
+    - fixes CVE-2022-22824: integer overflow in function defineAttribute,
+    - fixes CVE-2022-22825: integer overflow in function lookup,
+    - fixes CVE-2022-22826: integer overflow in function nextScaffoldPart,
+    - fixes CVE-2022-22827: integer overflow in function storeAtts.
+
+ -- Laszlo Boszormenyi (GCS) <gcs@debian.org>  Sun, 16 Jan 2022 21:48:09 +0100
+
+expat (2.4.2-1) unstable; urgency=medium
+
+  * New upstream release.
+
+ -- Laszlo Boszormenyi (GCS) <gcs@debian.org>  Thu, 23 Dec 2021 19:05:43 +0100
+
 expat (2.4.1-3) unstable; urgency=medium
 
   * Update watch file.

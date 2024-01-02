@@ -129,8 +129,10 @@ binary-arch: build install
 	dh_strip -a
 	dh_compress -a
 	dh_fixperms -a
-	chmod 644 $(CURDIR)/debian/libexpat1-dev/usr/share/doc/libexpat1-dev/examples/* \
-	          $(CURDIR)/debian/libexpat1-dev/usr/share/aclocal/*
+ifneq (,$(filter stage1, $(DEB_BUILD_PROFILES)))
+	chmod 644 $(CURDIR)/debian/libexpat1-dev/usr/share/doc/libexpat1-dev/examples/*
+endif
+	chmod 644 $(CURDIR)/debian/libexpat1-dev/usr/share/aclocal/*
 	dh_makeshlibs -a -V $(if $(with_udeb),--add-udeb=$(UPACKAGE))
 	dh_installdeb -a
 	dh_shlibdeps -a -l $(CURDIR)/debian/libexpat1/usr/lib/$(DEB_HOST_MULTIARCH)
