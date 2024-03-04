@@ -6,9 +6,10 @@
 #                      \___/_/\_\ .__/ \__,_|\__|
 #                               |_| XML parser
 #
-# Copyright (c) 2017-2022 Sebastian Pipping <sebastian@pipping.org>
+# Copyright (c) 2017-2024 Sebastian Pipping <sebastian@pipping.org>
 # Copyright (c) 2017      Rolf Eike Beer <eike@sf-mail.de>
 # Copyright (c) 2019      Mohammed Khajapasha <mohammed.khajapasha@intel.com>
+# Copyright (c) 2019      Manish, Kumar <manish3.kumar@intel.com>
 # Copyright (c) 2019      Philippe Antoine <contact@catenacyber.fr>
 # Licensed under the MIT license:
 #
@@ -33,13 +34,16 @@
 
 set -e
 
-if [[ ${TRAVIS_OS_NAME} = osx ]]; then
+if [[ ${RUNNER_OS} = macOS ]]; then
     latest_brew_python3_bin="$(ls -1d /usr/local/Cellar/python/3.*/bin | sort -n | tail -n1)"
     export PATH="${latest_brew_python3_bin}${PATH:+:}${PATH}"
     export PATH="/usr/local/opt/coreutils/libexec/gnubin${PATH:+:}${PATH}"
     export PATH="/usr/local/opt/findutils/libexec/gnubin${PATH:+:}${PATH}"
-elif [[ ${TRAVIS_OS_NAME} = linux ]]; then
-    export PATH="/usr/lib/llvm-15/bin:${PATH}"
+elif [[ ${RUNNER_OS} = Linux ]]; then
+    export PATH="/usr/lib/llvm-18/bin:${PATH}"
+else
+    echo "Unsupported RUNNER_OS \"${RUNNER_OS}\"." >&2
+    exit 1
 fi
 
 echo "New \${PATH}:"
@@ -62,9 +66,6 @@ elif [[ ${MODE} = cmake-oos ]]; then
     make VERBOSE=1 CTEST_OUTPUT_ON_FAILURE=1 all test
     make DESTDIR="${PWD}"/ROOT install
     find ROOT -printf "%P\n" | sort
-elif [[ ${MODE} = clang-format ]]; then
-    ./apply-clang-format.sh
-    git diff --exit-code
 elif [[ ${MODE} = coverage-sh ]]; then
     ./coverage.sh
 else

@@ -1,3 +1,13 @@
+expat (2.6.0-1) unstable; urgency=high
+
+  * New upstream release:
+    - fixes CVE-2023-52425: fix quadratic runtime issues with big tokens that
+      can cause denial of service (closes: #1063238),
+    - fixes CVE-2023-52426: fix billion laughs attacks for users compiling
+      without XML_DTD defined (which is not common) (closes: #1063240).
+
+ -- Laszlo Boszormenyi (GCS) <gcs@debian.org>  Tue, 06 Feb 2024 22:00:26 +0100
+
 expat (2.5.0-2) unstable; urgency=medium
 
   [ Samuel Thibault <sthibault@debian.org> ]
