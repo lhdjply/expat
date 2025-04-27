@@ -102,15 +102,6 @@ ifneq (,$(filter stage1, $(DEB_BUILD_PROFILES)))
 endif
 	$(MAKE) -C build/ install DESTDIR=$(CURDIR)/debian/tmp
 	$(MAKE) -C buildw/lib install DESTDIR=$(CURDIR)/debian/tmp APIHEADER=
-	# Move libexpat.so.* to /lib so that zfsutils can use it.
-	mkdir -p $(CURDIR)/debian/tmp/lib/$(DEB_HOST_MULTIARCH)
-	mv $(CURDIR)/debian/tmp/usr/lib/$(DEB_HOST_MULTIARCH)/libexpat.so.* \
-		$(CURDIR)/debian/tmp/lib/$(DEB_HOST_MULTIARCH)/
-	for i in $(CURDIR)/debian/tmp/usr/lib/$(DEB_HOST_MULTIARCH)/libexpat.so ; do \
-		dest=$$(readlink $$i) ; \
-		rm -f $$i ; \
-		ln -s /lib/$(DEB_HOST_MULTIARCH)/$$dest $$i ; \
-	done
 	mkdir -p debian/tmp/usr/include/$(DEB_HOST_MULTIARCH)
 	mv debian/tmp/usr/include/expat_config.h debian/tmp/usr/include/$(DEB_HOST_MULTIARCH)/.
 
